@@ -96,8 +96,8 @@ def prob_density_grid_max(doa_array, sd):
                 prob_mat += (-1 * relative_angle_calc(doa_array[k_in].doa_grid,
                                                       doa_array[k_in].doa_noised[i_in, j_in]) ** 2 / sd)
             dens_pos = np.argmax(prob_mat)
-            x_est[i_in, j_in] = (dens_pos % grid_n_rows) *
-            y_est[i_in, j_in] = dens_pos / grid_n_rows
+            x_est[i_in, j_in] = (dens_pos % grid_n_rows) * (doa_array[0].doa.shape[0] / doa_array[0].doa_grid.shape[0])
+            y_est[i_in, j_in] = dens_pos / grid_n_rows * (doa_array[0].doa.shape[0] / doa_array[0].doa_grid.shape[0])
     return x_est, y_est
 
 
